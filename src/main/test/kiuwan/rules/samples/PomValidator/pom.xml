@@ -1,298 +1,32 @@
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Padre de la arquitectura Cetelem Development Framework. Documentacion: 
-		http://ic.arquitectura.cetelem.es/jenkins/job/generic-rest/Maven_Site/ -->
 	<parent>
-		<groupId>es.cetelem.architecture.core.generic</groupId>
+		<groupId>com.mycompany</groupId>
 		<artifactId>generic-rest</artifactId>
-		<!--<version>2.0.5</version> -->
 		<version>2.0.6-SNAPSHOT</version>
 	</parent>
 
-	<groupId>es.cetelem.rest.pilot</groupId>
-	<artifactId>pilotRest</artifactId>
+	<groupId>com.pilot</groupId>
+	<artifactId>pilot</artifactId>
 	<packaging>war</packaging>
 	<name>pilotRest</name>
 	<version>3.0.0-SNAPSHOT</version>
-	<description>Este proyecto sirve para hacer desarrollos de arquitectura como plantilla de proyectos generic-rest</description>
-	<url>http://ic.arquitectura.cetelem.es/jenkins/job/pilotRest/Maven_Site/</url>
-
-	<scm>
-		<connection>
-            scm:svn:http://svn.arquitectura.cetelem.es/central/architecture/trunk/pilots/pilotRest
-        </connection>
-		<developerConnection>
-            scm:svn:http://svn.arquitectura.cetelem.es/central/architecture/trunk/pilots/pilotRest
-        </developerConnection>
-		<url>http://svn.arquitectura.cetelem.es/central/architecture/trunk/pilots/pilotRest</url>
-	</scm>
-
-	<organization>
-		<name>dpto-arquitectura.informatica@cetelem.es</name>
-	</organization>
-
-	<developers>
-		<developer>
-			<id>arquitectura</id>
-			<name>Dpto. Arquitectura</name>
-			<email>dpto-arquitectura.informatica@cetelem.es</email>
-			<roles>
-				<role>Propietario</role>
-			</roles>
-			<organization>Cetelem</organization>
-		</developer>
-
-		<developer>
-			<id>javiernaval</id>
-			<name>Javier Naval</name>
-			<email>javier.naval@ext.cetelem.es</email>
-			<roles>
-				<role>Responsable</role>
-			</roles>
-			<organization>Dpto. Arquitectura</organization>
-		</developer>
-
-	</developers>
-
-
-	<properties>
-		<!-- instance.name + instance.version + generic-rest hacen los parametros 
-			para consulta del servidor donde despliega Jenkins este artefacto. Se gestiona 
-			en la herramienta de 'Gestion de la Configuracion' http://ic.arquitectura.cetelem.es/deployConfigAdmin -->
-		<instance.name>ci</instance.name>
-		<instance.version>DEFAULT</instance.version>
-
-		<!-- Fichero swagger yml con la definicion del API y Model si se quiere 
-			modificar el nombre por defecto <api.spec>api-data/definition.yml</api.spec> -->
-
-		<!-- Sobreescibiendo esta propiedad a false se fuerza la generacion del 
-			cliente rest. <skip.client.codegen>true</skip.client.codegen> -->
-
-		<!-- Sobreescribiendo esta propiedad a true se omite la generacion de codigo 
-			swagger -->
-		<skip.swagger.codegen>false</skip.swagger.codegen>
-
-		<!-- Despliegue en Weblogic de desarrollo http://ic.arquitectura.cetelem.es/jenkins/job/generic-parent/Maven_Site/weblogicplugin.html# 
-			Ejecucion mediante el comando: mvn com.oracle.weblogic:weblogic-maven-plugin:redeploy -->
-		<weblogic.adminurl>t3://id6.cetelem.es:9001</weblogic.adminurl>
-		<weblogic.server>ci01</weblogic.server>
-		<weblogic.user>weblogic2</weblogic.user>
-		<weblogic.password>Cetelem01*</weblogic.password>
-
-	</properties>
-
-
-	<build>
-		<plugins>
-			<!-- Indica la ruta donde realizar los tags. El plugin de maven precommit-validation 
-				nos obliga a meterlo. -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<tagBase>http://svn.arquitectura.cetelem.es/central/architecture/tags/pilots/pilotRest</tagBase>
-					<useReleaseProfile>false</useReleaseProfile>
-				</configuration>
-			</plugin>
-
-
-			<!-- Plugin despliegue en Weblogic https://docs.oracle.com/cd/E17904_01/web.1111/e13702/maven_deployer.htm#DEPGD388 
-				Ejecucion mediante el comando: mvn com.oracle.weblogic:weblogic-maven-plugin:redeploy 
-				Mas documentacion: http://ic.arquitectura.cetelem.es/jenkins/job/generic-parent/Maven_Site/weblogicplugin.html# -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!-- TODO BORRARLO ESTA EN PARENT -->
-			<!--<plugin> -->
-			<!--<groupId>com.oracle.weblogic</groupId> -->
-			<!--<artifactId>weblogic-maven-plugin</artifactId> -->
-			<!--<version>12.2.1-3-0</version> -->
-			<!--<configuration> -->
-			<!--&lt;!&ndash; IP y puerto del Admin Server &ndash;&gt; -->
-			<!--<adminurl>t3://id6.cetelem.es:9001</adminurl> -->
-			<!--&lt;!&ndash; Servidores manejados en los que desplegar &ndash;&gt; -->
-			<!--<targets>ci01</targets> -->
-			<!--&lt;!&ndash; Usuario y password del Admin Server &ndash;&gt; -->
-			<!--<user>weblogic2</user> -->
-			<!--<password>Cetelem01*</password> -->
-			<!--<upload>true</upload> -->
-			<!--<remote>true</remote> -->
-			<!--<verbose>true</verbose> -->
-			<!--&lt;!&ndash; Nombre del artefacto en WL &ndash;&gt; -->
-			<!--<name>${project.build.finalName}</name> -->
-			<!--<stage>false</stage> -->
-
-			<!--&lt;!&ndash; Ruta del war en caso de ser un proyecto web &ndash;&gt; -->
-			<!--<source>${project.build.directory}\${project.build.finalName}.war</source> -->
-			<!--</configuration> -->
-			<!--</plugin> -->
-		</plugins>
-	</build>
-
 
 	<dependencies>
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- Specs -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
 		<dependency>
-			<!-- Ejemplo de Spec. Se carga desde el services-context.xml que a su 
-				vez importa env-spec-context.xml que se genera automaticamente por CDF -->
-			<groupId>es.cetelem.architecture.pilots</groupId>
+			<groupId class="theclass">org.pilots</groupId>
 			<artifactId>pilot-spec</artifactId>
 			<version>1.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
-			<!-- Esta spec la importamos porque define el jndi de la base de datos. 
-				Se utiliza en services-context.xml. En los test se puede ver como la proporcionamos 
-				en la carpeta resources. -->
-			<groupId>es.cetelem.environments.specs</groupId>
-			<artifactId>referenciales-spec</artifactId>
+			<groupId>org.specs</groupId>
+			<artifactId>referenc-spec</artifactId>
 			<version>1.2</version>
 		</dependency>
 
-
-
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- Libs -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-		<dependency>
-			<!-- generic-lib que utilizamos en este proyecto -->
-			<groupId>es.cetelem.architecture.pilot</groupId>
-			<artifactId>pilotLib</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-
-
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- Data Layer -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-		<dependency>
-			<!-- Ejemplo de importacion de un generic-data-layer -->
-			<groupId>es.cetelem.arquitecture.pilots</groupId>
-			<artifactId>pilotDataLayer</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-
-
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- Web Service Clients -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-		<dependency>
-			<!-- Libreria necesaria para utilizar artefactos de tipo 'Cliente de WS' 
-				en el proyecto. Esta libreria necesita que este configurado el endpointManagement.url 
-				en el fichero de properties Enlaza con el fichero registry-context.xml y 
-				busqueda de WS en el UDDI. -->
-			<groupId>es.cetelem.environments.specs</groupId>
-			<artifactId>service-consumer-spec</artifactId>
-			<version>1.0</version>
-		</dependency>
-
-
-		<dependency>
-			<!-- Ejemplo de Cliente WS. Cliente de WS de Interviniente para los ejemplos, 
-				utiliza beans que estan definidos en el service-consumer-spec -->
-			<groupId>es.cetelem.ws.postventa.intervinientes.services</groupId>
-			<artifactId>intervinienteService-wls103-client</artifactId>
-			<version>1.15</version>
-		</dependency>
-
-
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- Rest clients -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- Spec necesaria para el uso del Pathfinder (UDDI Rest) y el autodescubrimiento 
-			de servicios rest -->
-		<dependency>
-			<groupId>es.cetelem.architecture.specs.moa</groupId>
-			<artifactId>pathfinder-client-spec</artifactId>
-			<version>2.0.0</version>
-		</dependency>
-
-		<dependency>
-			<!-- Ejemplo de uso de un cliente rest autogenerado -->
-			<groupId>es.cetelem.architecture.ci</groupId>
-			<artifactId>mavenRestAPI-client</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-
-
-		<dependency>
-			<!-- Ejemplo de uso de un cliente rest autogenerado -->
-			<groupId>es.cetelem.architecture.ci</groupId>
-			<artifactId>artifactoryRestAPI-client</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-
-
-
-
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- Test -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-		<dependency>
-			<!-- Esta libreria proporciona conexiones a las distintas bases de datos 
-				de Cetelem para facilitar el mantenimiento de los test -->
-			<groupId>es.cetelem.datalayer.utils</groupId>
-			<artifactId>dataLayerTestUtils</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-			<scope>test</scope>
-		</dependency>
-
-
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-		<!-- Cetelem Development Framework -->
-		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-		<!-- MapStrut: Generación de Mapeadores. Requerida si se incluyen mapeadores. 
-			Para mas informacion consultar la documentacion: http://ic.arquitectura.cetelem.es/jenkins/job/generic-rest/Maven_Site/mappers.html# -->
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-jdk8</artifactId>
-		</dependency>
-
-
-
-
-		<!-- Trae algunas librerias de test de spring -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.boot</groupId> -->
-		<!-- <artifactId>spring-boot-starter-test</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
-
-		<!-- Sugerencia del IDE STS. Permite redespligue en caliente en el servidor 
-			local y otras mejoras. -->
-		<!-- Spring Boot includes an additional set of tools that can make the 
-			application development experience a little more pleasant -->
-		<!-- http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html -->
-
-
-		<!-- TODO HACE FALT AESTA DEPENDENCIA ?? -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework</groupId> -->
-		<!-- <artifactId>spring-context</artifactId> -->
-		<!-- </dependency> -->
-
-
-
 	</dependencies>
-
-
 </project>
