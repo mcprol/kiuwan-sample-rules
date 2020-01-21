@@ -17,7 +17,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId class="theclass">org.pilots</groupId>
+			<groupId>org.pilots</groupId>
 			<artifactId>pilot-spec</artifactId>
 			<version>1.1-SNAPSHOT</version>
 		</dependency>
